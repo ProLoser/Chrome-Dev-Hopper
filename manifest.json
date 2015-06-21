@@ -1,9 +1,9 @@
 {
-  "name": "CHANGE THIS : Extension boilerplate",
+  "name": "Development Server Switcher",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
-  "homepage_url": "http://extensionizr.com",
+  "description": "Quickly jump between development, staging and production servers on the fly",
+  "homepage_url": "https://github.com/ProLoser/Chrome-Server-Switcher",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -12,16 +12,18 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "src/bg/background.js"
+      "src/background.js"
     ],
     "persistent": true
   },
 	"page_action": {
-		"default_title": "Server Switcher",
+		"default_title": "Change Environment",
 		"default_icon": "icons/icon48.png",
-		"default_popup": "popup.html"
+		"default_popup": "src/popup.html"
 	},
+  "options_page": "src/options.html",
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ]
 }

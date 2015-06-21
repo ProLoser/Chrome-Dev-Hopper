@@ -1,0 +1,24 @@
+body {
+  font-size: 14px;
+}
+
+h1 {
+  white-space: nowrap;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  padding: 5px;
+  display: block;
+}
+a:hover {
+  background: lightblue;
+}
+.active {
+  color: red;
+}
