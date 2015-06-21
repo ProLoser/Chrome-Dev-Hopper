@@ -2,10 +2,8 @@ angular.module('app', [])
 
 .run(function($rootScope) {
 
-
-
   chrome.storage.sync.get('projects', function(data){
-    $rootScope.projects = data.projects;
+    $rootScope.projects = data.projects || $rootScope.projects;
 
     $rootScope.$apply();
   });
