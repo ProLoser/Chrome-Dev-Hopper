@@ -1,10 +1,152 @@
-input {
-  display: block;
+* {
+  box-sizing: border-box;
 }
-ul {
-  list-style: none;
-}
-
 body {
   font-size: 14px;
+  margin-top: 60px;
+}
+a {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+.environments {
+}
+.environments li {
+  margin: 10px 0;
+}
+
+
+
+button span.r {
+  border-left: 1px solid #888;
+  box-shadow: -1px 0 1px rgba(255,255,255,.4), inset 1px 0 1px rgba(255,255,255,.4);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 9px;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+button span.l {
+  border-right: 1px solid #888;
+  box-shadow: 1px 0 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(255,255,255,.4);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 9px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+header {
+  position: fixed;
+  padding: 10px 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+  background: white;
+}
+.alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 10px 20px;
+  text-align: center;
+  vertical-align: middle;
+  background: #8BC34A;
+  color: white;
+  margin: 0;
+  height: 100%;
+}
+
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.center {
+  text-align: center;
+}
+
+.row {
+  overflow: hidden;
+}
+
+.projects label {
+  display: block;
+  overflow: hidden;
+  text-align: right;
+  line-height: 2em;
+}
+
+.projects button {
+  min-height: 0;
+  min-width: 0;
+}
+
+.projects input {
+  display: block;
+  float: right;
+  text-align: left;
+  width: 70%;
+  margin-left: 10px !important;
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.trash {
+  padding: 5px;
+  margin-left: -5px;
+}
+
+.projects > li {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.projects > li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+i.trash {
+  background: url(chrome://resources/images/trash.png) 0 0 no-repeat;
+  height: 14px 16px;
+  display: block;
+}
+
+
+/* Normal */
+.ng-hide {
+  display: none;
+}
+
+/* Starting */
+.ng-hide-add {
+  display: block;
+  opacity: 1;
+  transition: all ease 0.3s;
+}
+.ng-hide-remove {
+  display: block;
+  opacity: 0;
+  transition: all ease 0.1s;
+}
+
+/* Ending */
+.ng-hide-add-active {
+  display: block;
+  opacity: 0;
+}
+.ng-hide-remove-active {
+  display: block;
+  opacity: 1;
 }

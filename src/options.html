@@ -1,31 +1,64 @@
 <html ng-app="app" ng-csp>
 <head>
-  <script src="/js/angular.min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
   <script src="/src/options.js"></script>
   <link href="/src/options.css" rel="stylesheet">
 </head>
-<body>
+<body id="extension-settings">
 
-<h1>Server Switcher</h1>
+<header>
+  <button ng-click="save()" class="right">
+    Save
+    <span class="r">&#x2714;</span>
+  </button>
+  <button ng-click="newProject()">
+    <span class="l">&#10010;</span>
+    Add Project
+  </button>
 
-<button ng-click="newProject()">Add Project</button>
+  <p class="alert" ng-show="saved">
+    Changes Saved
+  </p>
+</header>
 
 
-<ul>
+
+<ul class="projects">
   <li ng-repeat="project in projects">
-    <form ng-submit="save(project)">
-      <input placeholder="Project Name" ng-model="project.name" required>
-      <ul>
-        <li ng-repeat="environment in project.environments">
-          <input ng-model="environment.name" placeholder="Environment Name" required>
-          <input ng-model="environment.regex" placeholder="Regex" required>
-          <input ng-model="environment.base" placeholder="Base Path (for replacement)" required>
-          <button ng-if="$index" ng-click="project.environments.splice($index, 1)" type="button">Remove</button>
-        </li>
-      </ul>
-      <button ng-click="project.environments.push({})" type="button">New Environment</button>
-      <button type="submit">Save</button>
-    </form>
+    <label>
+      <input placeholder="Example" ng-model="project.name" required>
+      <a class="left trash" ng-click="projects.splice($index, 1)">
+        <img src="/icons/trash.png">
+      </a>
+      <strong>Project</strong>
+    </label>
+    <ul class="environments">
+      <li ng-repeat="environment in project.environments">
+        <label>
+          <input ng-model="environment.name" placeholder="Production, Staging, Local" required>
+          <a class="left trash" ng-click="project.environments.splice($index, 1)">
+            <img src="/icons/trash.png">
+          </a>
+          Name
+        </label>
+        <label>
+          <input ng-model="environment.regex" placeholder="example\.com:3000/" required>
+          RegExp
+        </label>
+        <label>
+          <input ng-model="environment.base" placeholder="example.com:3000/" required>
+          Replace URL
+        </label>
+      </li>
+    </ul>
+    <p class="center">
+
+      <button ng-click="project.environments.push({})" type="button">
+        New Environment
+        <span class="r">&#10010;</span>
+      </button>
+    </p>
   </li>
 
 </ul>

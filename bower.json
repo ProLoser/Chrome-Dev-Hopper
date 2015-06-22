@@ -1,0 +1,19 @@
+{
+  "name": "chrome-server-switcher",
+  "version": "0.0.3",
+  "homepage": "https://github.com/ProLoser/Chrome-Server-Switcher",
+  "authors": [
+    "Dean Sofer <proloser@hotmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "~1.4.1"
+  }
+}

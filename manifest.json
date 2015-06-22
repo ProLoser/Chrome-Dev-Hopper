@@ -1,6 +1,6 @@
 {
   "name": "Development Server Switcher",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "Quickly jump between development, staging and production servers on the fly",
   "homepage_url": "https://github.com/ProLoser/Chrome-Server-Switcher",
@@ -17,11 +17,14 @@
     "persistent": true
   },
 	"page_action": {
-		"default_title": "Change Environment",
+		"default_title": "Change Server",
 		"default_icon": "icons/icon48.png",
 		"default_popup": "src/popup.html"
 	},
-  "options_page": "src/options.html",
+  "options_ui": {
+    "page": "src/options.html",
+    "chrome_style": true
+  },
   "permissions": [
     "tabs",
     "storage"

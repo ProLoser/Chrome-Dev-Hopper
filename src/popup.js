@@ -2,6 +2,10 @@ angular.module('app', [])
 
 .run(function($rootScope){
 
+  $rootScope.options = function(){
+    chrome.runtime.openOptionsPage();
+  };
+
   chrome.tabs.getSelected(null, function(activeTab){
 
     $rootScope.go = function(url) {

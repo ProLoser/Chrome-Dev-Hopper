@@ -1,17 +1,21 @@
 <html ng-app="app" ng-csp>
 <head>
-  <script src="/js/angular.min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/src/popup.js"></script>
   <link href="/src/popup.css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Server Switcher: {{project.name}}</h1>
+<h3>
+  {{::project.name}}
+  <a ng-click="options()">&#x270e;</a>
+</h3>
 
 <ul>
-  <li ng-repeat="environment in project.environments" ng-class="{active:environment.active}">
-    <a ng-href="{{environment.url}}" ng-click="go(environment.url)">
-      {{environment.name}}
+  <li ng-repeat="environment in ::project.environments">
+    <a ng-class="::{active:environment.active}" title="{{::environment.url}}" ng-href="{{::environment.url}}" ng-click="go(environment.url)">
+      {{::environment.name}}<br>
+      <small>{{::environment.url}}</small>
     </a>
   </li>
 </ul>
