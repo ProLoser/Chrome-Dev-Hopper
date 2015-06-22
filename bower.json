@@ -1,9 +1,10 @@
 {
-  "name": "chrome-server-switcher",
-  "version": "0.0.3",
-  "homepage": "https://github.com/ProLoser/Chrome-Server-Switcher",
+  "name": "chrome-dev-hopper",
+  "version": "0.0.4",
+  "homepage": "https://github.com/ProLoser/Chrome-Dev-Hopper",
   "authors": [
     "Dean Sofer <proloser@hotmail.com>"
+    "Tan-Ya Gerrodette"
   ],
   "license": "MIT",
   "ignore": [
