@@ -1,7 +1,7 @@
 {
   "name": "Dev Hopper",
   "version": "0.0.4",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "Quickly jump between development, staging and production servers. For develhoppers.",
   "homepage_url": "https://github.com/ProLoser/Chrome-Server-Switcher",
   "icons": {
@@ -11,10 +11,7 @@
   },
   "default_locale": "en",
   "background": {
-    "scripts": [
-      "src/background.js"
-    ],
-    "persistent": true
+    "service_worker": "src/background.js"
   },
 	"page_action": {
 		"default_title": "Change Server",
@@ -28,5 +25,8 @@
   "permissions": [
     "tabs",
     "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ]
 }

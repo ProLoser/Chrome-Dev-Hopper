@@ -1,7 +1,6 @@
-// Listen for any changes to the URL of any tab.
-chrome.tabs.onUpdated.addListener(pageLoaded);
+chrome.webNavigation.onCompleted.addListener(pageLoaded);
 
-function pageLoaded(tabId, changeInfo, tab) {
+function pageLoaded(details) {
 
   chrome.storage.sync.get('projects', function(data) {
     var projects = data.projects || [];
@@ -10,8 +9,8 @@ function pageLoaded(tabId, changeInfo, tab) {
 
       (project.environments || []).some(function(environment){
 
-        if (new RegExp(environment.regex).test(tab.url)) {
-          chrome.pageAction.show(tabId);
+        if (new RegExp(environment.regex).test(details.url)) {
+          chrome.pageAction.show(details.tabId);
           return true;
         }
 

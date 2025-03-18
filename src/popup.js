@@ -13,7 +13,7 @@ angular.module('app', [])
       window.close();
     };
 
-    chrome.storage.sync.get('projects', function(data) {
+    chrome.storage.local.get('projects', function(data) {
 
       var projects = data.projects || [];
 

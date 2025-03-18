@@ -1,9 +1,9 @@
 <html ng-app="app" ng-csp>
 <head>
-  <script src="/bower_components/angular/angular.min.js"></script>
-  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
-  <script src="/src/options.js"></script>
-  <link href="/src/options.css" rel="stylesheet">
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="src/options.js"></script>
+  <link href="src/options.css" rel="stylesheet">
 </head>
 <body id="extension-settings">
 
@@ -29,7 +29,7 @@
     <label>
       <input placeholder="Example" ng-model="project.name" required>
       <a class="left trash" ng-click="projects.splice($index, 1)">
-        <img src="/icons/trash.png">
+        <img src="icons/trash.png">
       </a>
       <strong>Project</strong>
     </label>
@@ -38,7 +38,7 @@
         <label>
           <input ng-model="environment.name" placeholder="Production, Staging, Local" required>
           <a class="left trash" ng-click="project.environments.splice($index, 1)">
-            <img src="/icons/trash.png">
+            <img src="icons/trash.png">
           </a>
           Name
         </label>

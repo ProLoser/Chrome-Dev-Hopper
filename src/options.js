@@ -2,7 +2,7 @@ angular.module('app', ['ngAnimate'])
 
 .run(function($rootScope, $timeout) {
 
-  chrome.storage.sync.get('projects', function(data){
+  chrome.storage.local.get('projects', function(data){
     $rootScope.projects = data.projects || $rootScope.projects;
 
     $rootScope.$apply();
@@ -17,7 +17,7 @@ angular.module('app', ['ngAnimate'])
   };
 
   $rootScope.save = function() {
-    chrome.storage.sync.set({ projects: angular.copy($rootScope.projects) });
+    chrome.storage.local.set({ projects: angular.copy($rootScope.projects) });
     $rootScope.saved = true;
     $timeout(function(){
       $rootScope.saved = false;
