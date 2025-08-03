@@ -1,0 +1,11 @@
+{
+  "name": "dev-hopper",
+  "version": "1.0.0",
+  "description": "Quickly jump between development, staging and production servers. For develhoppers.",
+  "keywords": [
+    "chrome-extension",
+    "web-extension"
+  ],
+  "author": "",
+  "license": "ISC"
+}
