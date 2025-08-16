@@ -13,7 +13,9 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       if (shouldShow) {
         chrome.pageAction.show(tabId)
       } else {
-        chrome.pageAction.hide(tabId)
+        chrome.action.show(tabId)
+      } else {
+        chrome.action.hide(tabId)
       }
     })
   }
