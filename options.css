@@ -1,11 +1,13 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   font-size: 14px;
   margin-top: 60px;
   font-family: sans-serif;
 }
+
 a {
   cursor: pointer;
 }
@@ -17,40 +19,43 @@ ul {
 }
 
 .options-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.environments li {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 4px;
+.environments {
+  li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
 }
 
 button {
-    cursor: pointer;
-}
+  cursor: pointer;
 
-button span.r {
-  border-left: 1px solid #888;
-  box-shadow: -1px 0 1px rgba(255,255,255,.4), inset 1px 0 1px rgba(255,255,255,.4);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 9px;
-  margin-left: 8px;
-  font-weight: bold;
-}
-
-button span.l {
-  border-right: 1px solid #888;
-  box-shadow: 1px 0 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(255,255,255,.4);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 9px;
-  margin-right: 8px;
-  font-weight: bold;
+  span {
+    &.r {
+      border-left: 1px solid #888;
+      box-shadow: -1px 0 1px rgba(255,255,255,.4), inset 1px 0 1px rgba(255,255,255,.4);
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 9px;
+      margin-left: 8px;
+      font-weight: bold;
+    }
+    &.l {
+      border-right: 1px solid #888;
+      box-shadow: 1px 0 1px rgba(255,255,255,.4), inset -1px 0 1px rgba(255,255,255,.4);
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 9px;
+      margin-right: 8px;
+      font-weight: bold;
+    }
+  }
 }
 
 header {
@@ -63,6 +68,7 @@ header {
   background: white;
   z-index: 10;
 }
+
 .alert {
   position: absolute;
   top: 0;
@@ -92,51 +98,54 @@ header {
   overflow: hidden;
 }
 
-.projects label {
-  display: block;
-  overflow: hidden;
-  text-align: right;
-  line-height: 2em;
-  margin-bottom: 5px;
-}
+.projects {
+  label {
+    display: block;
+    overflow: hidden;
+    text-align: right;
+    line-height: 2em;
+    margin-bottom: 5px;
+  }
 
-.projects button {
-  min-height: 0;
-  min-width: 0;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-}
+  button {
+    min-height: 0;
+    min-width: 0;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+  }
 
-.projects input {
-  display: block;
-  float: right;
-  text-align: left;
-  width: 70%;
-  margin-left: 10px !important;
-  border: none;
-  padding: 5px;
-  border-bottom: 1px solid #ccc;
+  input {
+    display: block;
+    float: right;
+    text-align: left;
+    width: 70%;
+    margin-left: 10px !important;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  > li {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  > li:last-child {
+    border-bottom: 1px solid #ddd;
+  }
 }
 
 .trash {
   padding: 5px;
   margin-left: -5px;
   margin-right: 5px;
-}
-.trash img {
+
+  img {
     width: 16px;
     height: 16px;
     vertical-align: middle;
-}
-
-.projects > li {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.projects > li:last-child {
-  border-bottom: 1px solid #ddd;
+  }
 }

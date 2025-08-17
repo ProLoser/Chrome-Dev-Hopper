@@ -1,36 +1,64 @@
 import { useStorage } from "@plasmohq/storage/hook"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import "./options.css"
 
-function OptionsIndex() {
-  const [projects, setProjects] = useStorage("projects", [])
+const PLACEHOLDERS = [
+  {
+    name: 'Production',
+    regex: 'example\\.com',
+    replace: 'example.com',
+  },
+  {
+    name: 'Staging',
+    regex: 'test\\.com',
+    replace: 'test.com',
+  },
+  {    
+    name: 'Localhost',
+    regex: 'localhost:3000',
+    replace: 'localhost:3000',
+  }
+]
+
+const newProject = () => ({ name: "", environments: [{ name: "", regex: "", base: "" }, { name: "", regex: "", base: "" }] })
+const DEFAULT_PROJECTS = [newProject()]
+
+export default function OptionsIndex() {
+  const [projects, setStore, {
+    setRenderValue
+  }] = useStorage("projects", DEFAULT_PROJECTS)
   const [saved, setSaved] = useState(false)
 
   const handleProjectChange = (index, field, value) => {
     const newProjects = [...projects]
     newProjects[index][field] = value
-    setProjects(newProjects)
+    // setProjects(newProjects)
+    setRenderValue(newProjects)
   }
 
   const handleEnvChange = (projIndex, envIndex, field, value) => {
     const newProjects = [...projects]
     newProjects[projIndex].environments[envIndex][field] = value
-    setProjects(newProjects)
+    // setProjects(projects)
+    setRenderValue(newProjects)
   }
 
   const addProject = () => {
-    setProjects([...projects, { name: "", environments: [{ name: "", regex: "", base: "" }] }])
+    // setProjects([...projects, newProject()])
+    setRenderValue([...projects, newProject()])
   }
 
   const removeProject = (index) => {
     const newProjects = projects.filter((_, i) => i !== index)
-    setProjects(newProjects)
+      // setProjects(newProjects)
+    setRenderValue(newProjects)
   }
 
   const addEnvironment = (projIndex) => {
     const newProjects = [...projects]
     newProjects[projIndex].environments.push({ name: "", regex: "", base: "" })
-    setProjects(newProjects)
+    // setProjects(projects)
+    setRenderValue(newProjects)
   }
 
   const removeEnvironment = (projIndex, envIndex) => {
@@ -38,65 +66,79 @@ function OptionsIndex() {
     newProjects[projIndex].environments = newProjects[projIndex].environments.filter(
       (_, i) => i !== envIndex
     )
-    setProjects(newProjects)
+    // setProjects(projects)
+    setRenderValue(newProjects)
   }
 
-  const saveProjects = () => {
-    setProjects(projects)
+  const submitHandler = useCallback((e) => {
+    e.preventDefault()
+
+    // setProjects(projects)
+    setStore(projects)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
-  }
+  }, [projects])
 
   return (
-    <div className="options-container">
+    <form className="options-container" id="options" onSubmit={submitHandler}>
       <header>
-        <button onClick={saveProjects} className="right">
+        <button type="submit" className="right">
           Save <span className="r">&#x2714;</span>
         </button>
-        <button onClick={addProject}>
+        <button type="button" onClick={addProject}>
           <span className="l">&#10010;</span> Add Project
         </button>
         {saved && <p className="alert">Changes Saved</p>}
       </header>
 
       <ul className="projects">
+        {projects.length === 0 && (
+          <li className="center">
+            <p>No projects found. Add a project to get started.</p>
+
+            <button type="button" onClick={addProject}>
+              <span className="l">&#10010;</span> Add Project
+            </button>
+          </li>
+        )}
         {projects.map((project, projIndex) => (
           <li key={projIndex}>
             <label>
+              <button type="button" className="left" onClick={() => removeProject(projIndex)}>
+                &#10060;
+              </button>
               <input
-                placeholder="Example"
+                placeholder="My Project"
                 value={project.name}
                 onChange={(e) => handleProjectChange(projIndex, "name", e.target.value)}
                 required
               />
-              <a className="left trash" onClick={() => removeProject(projIndex)}>
-                <img src="/icons/trash.png" alt="Delete" />
-              </a>
               <strong>Project</strong>
             </label>
             <ul className="environments">
               {project.environments.map((env, envIndex) => (
                 <li key={envIndex}>
                   <label>
+                    <button
+                      type="button"
+                      className="left"
+                      onClick={() => removeEnvironment(projIndex, envIndex)}>
+                      &#10060;
+                    </button>
                     <input
                       value={env.name}
-                      placeholder="Production, Staging, Local"
+                      placeholder={PLACEHOLDERS[envIndex]?.name ?? "Environment Name"}
                       onChange={(e) =>
                         handleEnvChange(projIndex, envIndex, "name", e.target.value)
                       }
                       required
                     />
-                     <a
-                      className="left trash"
-                      onClick={() => removeEnvironment(projIndex, envIndex)}>
-                      <img src="/icons/trash.png" alt="Delete" />
-                    </a>
-                    Name
+                    Environment
                   </label>
                   <label>
                     <input
                       value={env.regex}
-                      placeholder="example\.com:3000/"
+                      placeholder={PLACEHOLDERS[envIndex]?.regex ?? "example\\.com:3000/"}
                       onChange={(e) =>
                         handleEnvChange(projIndex, envIndex, "regex", e.target.value)
                       }
@@ -107,13 +149,13 @@ function OptionsIndex() {
                   <label>
                     <input
                       value={env.base}
-                      placeholder="example.com:3000/"
+                      placeholder={PLACEHOLDERS[envIndex]?.replace ?? "example.com:3000/"}
                       onChange={(e) =>
                         handleEnvChange(projIndex, envIndex, "base", e.target.value)
                       }
                       required
                     />
-                    Replace URL
+                    Replacement
                   </label>
                 </li>
               ))}
@@ -126,8 +168,6 @@ function OptionsIndex() {
           </li>
         ))}
       </ul>
-    </div>
+    </form>
   )
 }
-
-export default OptionsIndex

@@ -55,7 +55,7 @@ function IndexPopup() {
         }
         const activeTab = tabs[0];
         if (activeTab) {
-            chrome.tabs.update(activeTab.id, { url: url });
+            chrome.tabs.update(activeTab.id, { url });
             window.close();
         }
     });
@@ -93,7 +93,16 @@ function IndexPopup() {
           </ul>
         </>
       ) : (
-        <div>No matching project found for this URL.</div>
+        <center>
+          <p>
+            No matching project found for this URL.
+          </p>
+          <p>
+            <button onClick={openOptionsPage} title="Options">
+              <span className="l">&#10010;</span> Add Project
+            </button>
+          </p>
+        </center>
       )}
     </div>
   )
