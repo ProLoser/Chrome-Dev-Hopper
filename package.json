@@ -1,7 +1,7 @@
 {
   "name": "chrome-dev-hopper",
   "displayName": "Chrome Dev Hopper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quickly jump between development, staging and production servers. For develhoppers",
   "homepage": "https://github.com/ProLoser/Chrome-Dev-Hopper",
   "author": "Dean Sofer",
