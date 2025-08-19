@@ -27,7 +27,8 @@
   },
   "manifest": {
     "permissions": [
-      "activeTab"
+      "activeTab",
+      "tabs"
     ]
   }
 }
