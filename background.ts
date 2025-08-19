@@ -48,15 +48,6 @@ const onUpdate = async (tabId, tab) => {
         "128": icon128blue
       } })
     }
-  } else {
-    // chrome.action.setPopup({ tabId, popup: '' })
-    // chrome.action.setBadgeText({ tabId, text: '' })
-    // chrome.action.setIcon({ tabId, path: {
-    //   "16": icon16blue,
-    //   "32": icon32blue,
-    //   "48": icon64blue,
-    //   "128": icon128blue
-    // } })
   }
 }
 
